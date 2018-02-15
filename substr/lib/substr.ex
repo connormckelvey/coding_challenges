@@ -14,13 +14,10 @@ defmodule Substr do
     get_substrs_of_len(str, len)
     |> Enum.filter(fn(substr) ->
       set = substr
-      |> IO.inspect
-      |> String.split("")
-      |> IO.inspect()
+      |> String.split("", trim: true)
       |> MapSet.new()
 
-      IO.inspect set
-      MapSet.size(set) == len
+      MapSet.size(set) == len || MapSet.size(set) == len - 1
     end)
   end
 end
